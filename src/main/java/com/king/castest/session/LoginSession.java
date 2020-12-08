@@ -1,9 +1,10 @@
 package com.king.castest.session;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class LoginSession {
-    private static Map<String, String> cash;
+    private static Map<String, String> cash = new HashMap<>();
 
     private static final String USERNAME = "username";
 
