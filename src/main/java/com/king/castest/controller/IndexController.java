@@ -33,6 +33,7 @@ public class IndexController {
             AttributePrincipal principal = AssertionHolder.getAssertion().getPrincipal();
             Map<String, Object> attributes = principal.getAttributes();
             LoginSession.setUserName((String) attributes.get("loginName"));
+            System.out.println("登录账户：" + attributes.get("loginName"));
         }
     }
 }
