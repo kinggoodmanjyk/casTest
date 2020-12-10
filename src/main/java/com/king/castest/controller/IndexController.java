@@ -25,15 +25,15 @@ public class IndexController {
 
     @RequestMapping("/logout")
     public String hello(){
-        return "redirect:"+casAutoConfig.getServerUrlPrefix()+"/logout";
+        return "redirect:"+casAutoConfig.getServerUrlPrefix()+"/logout?service="+casAutoConfig.getClientHostUrl();
     }
 
     private void getUserFromCAS(){
         if (AssertionHolder.getAssertion().isValid()) {
             AttributePrincipal principal = AssertionHolder.getAssertion().getPrincipal();
             Map<String, Object> attributes = principal.getAttributes();
-            LoginSession.setUserName((String) attributes.get("loginName"));
-            System.out.println("登录账户：" + attributes.get("loginName"));
+            LoginSession.setUserName((String) attributes.get("username"));
+            System.out.println("登录账户：" + attributes.get("username"));
         }
     }
 }

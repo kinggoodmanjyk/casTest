@@ -76,7 +76,7 @@ public class CASAutoConfig {
         // 设定匹配的路径
         registration.addUrlPatterns("/*");
         Map<String,String> initParameters = new HashMap<>();
-        initParameters.put("casServerLoginUrl", serverUrlPrefix);
+        initParameters.put("casServerLoginUrl", serverLoginUrl);
         initParameters.put("serverName", clientHostUrl);
         //忽略的url，"|"分隔多个url
         initParameters.put("ignorePattern", ignoreHostUrl);
