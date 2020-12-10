@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Controller
@@ -24,7 +25,10 @@ public class IndexController {
     }
 
     @RequestMapping("/logout")
-    public String hello(){
+    public String hello(HttpServletRequest request){
+        if("true".equals(request.getParameter("isTimeout"))){
+            System.out.println("消除本地session....登出");
+        }
         return "redirect:"+casAutoConfig.getServerUrlPrefix()+"/logout?service="+casAutoConfig.getClientHostUrl();
     }
 
