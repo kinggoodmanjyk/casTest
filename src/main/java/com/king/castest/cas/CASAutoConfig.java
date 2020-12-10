@@ -35,7 +35,7 @@ public class CASAutoConfig {
     }
 
     /**
-     * 授权过滤器
+     * 单点登录登出
      * @return
      */
     @Bean
@@ -48,7 +48,7 @@ public class CASAutoConfig {
     }
 
     /**
-     * 授权过滤器
+     * 单点登录登出
      * @return
      */
     @Bean
@@ -66,8 +66,8 @@ public class CASAutoConfig {
     }
 
     /**
-     * 授权过滤器
-     * @return
+     *
+     * @return 单点登录的认证工作
      */
     @Bean
     public FilterRegistrationBean filterAuthenticationRegistration() {
@@ -87,7 +87,7 @@ public class CASAutoConfig {
     }
 
     /**
-     * ticket授权过滤器
+     * 该过滤器负责对Ticket的校验工作
      * @return
      */
     @Bean
@@ -109,7 +109,8 @@ public class CASAutoConfig {
 
 
     /**
-     * ticket授权过滤器
+     * 该过滤器使得开发者可以通过org.jasig.cas.client.util.AssertionHolder来获取用户的登录名。
+     * 比如AssertionHolder.getAssertion().getPrincipal().getName()。
      * @return
      */
     @Bean
@@ -122,4 +123,5 @@ public class CASAutoConfig {
         registration.setOrder(4);
         return registration;
     }
+
 }
