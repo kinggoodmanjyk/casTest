@@ -19,16 +19,19 @@ public class IndexController {
     private CASAutoConfig casAutoConfig;
 
     @RequestMapping("")
-    public String index(){
-        getUserFromCAS();
-        return "success";
+    public String index(HttpServletRequest request){
+        if("true".equals(request.getParameter("isTimeout"))){
+            System.out.println("消除本地session....登出");
+            return "redirect:"+casAutoConfig.getServerUrlPrefix()+"/logout?service="+casAutoConfig.getClientHostUrl();
+        }else {
+            getUserFromCAS();
+            return "success";
+        }
     }
 
     @RequestMapping("/logout")
     public String hello(HttpServletRequest request){
-        if("true".equals(request.getParameter("isTimeout"))){
-            System.out.println("消除本地session....登出");
-        }
+        System.out.println("消除本地session....登出");
         return "redirect:"+casAutoConfig.getServerUrlPrefix()+"/logout?service="+casAutoConfig.getClientHostUrl();
     }
 
